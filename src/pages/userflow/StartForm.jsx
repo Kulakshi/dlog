@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
-import Field from "./components/Field";
-import SubmitButton from "./components/SubmitButton";
+import Field from "../components/Field";
+import SubmitButton from "../components/SubmitButton";
 import { useNavigate } from 'react-router-dom';
-import {login} from "../services/user";
+import {login} from "../../services/user";
 
 
 const StartForm = () => {

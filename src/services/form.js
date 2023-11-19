@@ -11,7 +11,7 @@ export const addEntry = async (form_id, element_id, value=null) => {
         element_id: element_id,
         value: value,  // Replace this with your actual value data
     };
-    axios.post(BASEURL+`form/add-entry/`,  requestData)
+    axios.post(BASEURL+url,  requestData)
         .then(response => {
             console.log(response.data);
         })

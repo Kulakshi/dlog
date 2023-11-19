@@ -1,8 +1,7 @@
 import React from 'react';
-import SubmitButton from "./components/SubmitButton";
-import Scale from "./components/Scale";
-import TimeStampButton from "./components/TimeStampButton";
-import {addEntry} from "../services/form";
+import Scale from "../components/Scale";
+import TimeStampButton from "../components/TimeStampButton";
+import {addEntry} from "../../services/form";
 
 
 

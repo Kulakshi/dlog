@@ -10,7 +10,7 @@ export const login = async (user_id, team, project) => {
         team: team,
         project: project
     };
-    axios.post(BASEURL+url,  requestData)
+    axios.post(BASEURL + url, requestData)
         .then(response => {
             return response
         })
