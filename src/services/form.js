@@ -2,13 +2,37 @@
 import axios from 'axios';
 
 const BASEURL = "http://127.0.0.1:8000/"
-export const addEntry = async (form_id, element_id, value=null) => {
+
+
+export const getAllForms = async () => {
+    const url = `form/all/`;
+    return axios.get(BASEURL + url)
+        .then(response => {
+            return response.data;
+        })
+        .catch(error => {
+            console.error(error);
+        });
+};
+
+export const getForm = async (formId) => {
+    const url = `form/${formId}/`;
+    return axios.get(BASEURL + url)
+        .then(response => {
+            return response.data;
+        })
+        .catch(error => {
+            console.error(error);
+        });
+};
+
+export const addEntry = async (userId, formId, elementId, value=null) => {
     const url = 'form/add-entry/';
     const requestData = {
-        user_id: 1,
+        user_id: userId,
         time: new Date().toISOString(),
-        form_id: form_id,
-        element_id: element_id,
+        form_id: formId,
+        element_id: elementId,
         value: value,  // Replace this with your actual value data
     };
     axios.post(BASEURL+url,  requestData)

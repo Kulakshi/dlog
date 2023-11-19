@@ -12,7 +12,7 @@ export const login = async (user_id, team, project) => {
     };
     axios.post(BASEURL + url, requestData)
         .then(response => {
-            return response
+            return response.data
         })
         .catch(error => {
             console.error(error);
