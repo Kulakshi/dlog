@@ -3,7 +3,7 @@ import axios from 'axios';
 import {BASE_URL} from "../constants";
 export const callEndpoint = async (url, method, data) => {
     try {
-      const response = await fetch(BASEURL+url, {
+      const response = await fetch(BASE_URL+url, {
         method,
         headers: {
           'Content-Type': 'application/json',
@@ -33,7 +33,7 @@ export const callEndpoint = async (url, method, data) => {
 
 export const post = async (url, data, queryParams) => {
   try {
-    const response = await axios.post(`${BASEURL+url}?${new URLSearchParams(queryParams)}`, data, {
+    const response = await axios.post(`${BASE_URL+url}?${new URLSearchParams(queryParams)}`, data, {
       headers: {
         'Content-Type': 'application/json',
       },

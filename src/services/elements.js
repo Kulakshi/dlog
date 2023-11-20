@@ -4,7 +4,7 @@ import {BASE_URL} from "../constants";
 
 export const getElementTypes = async () => {
     const url = 'element-types/get-elements/';
-    return axios.get(BASEURL + url)
+    return axios.get(BASE_URL + url)
         .then(response => {
             return response.data;
         })
@@ -15,7 +15,7 @@ export const getElementTypes = async () => {
 
 export const getType = async (elementName) => {
     const url = `element-types/${elementName}`;
-    return axios.get(BASEURL + url)
+    return axios.get(BASE_URL + url)
         .then(response => {
             return response.data;
         })
@@ -26,7 +26,7 @@ export const getType = async (elementName) => {
 
 export const createElement = async (element) => {
     const url = `elements/create`;
-    axios.post(BASEURL + url, element)
+    axios.post(BASE_URL + url, element)
         .then(response => {
             return response
         })
