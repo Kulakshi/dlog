@@ -7,13 +7,15 @@ import Button from '@mui/material/Button';
 import {personalizeElement} from "../../services/form";
 import {useUser} from "../../contexts/UserContext";
 
-const ToolTip = ({formId, element, onClose}) => {
+const ToolTip = ({formId, element, onClose, setElement}) => {
 
     const [customLabel, setCustomLabel] = useState()
     const {userId} = useUser()
 
     const onSave = ()=>{
         personalizeElement(userId, formId, element.element_id, customLabel).then(onClose())
+        setElement({...element, customLabel:customLabel})
+        console.log({...element, customLabel:customLabel})
     }
 
     return (

@@ -40,6 +40,7 @@ const CreateForm = () => {
 
 
     const submitForm = (e) => {
+        console.log(form, name)
         if (!form.name) {
             alert("Name is required")
         } else {

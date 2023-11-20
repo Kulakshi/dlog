@@ -17,12 +17,14 @@ function App() {
                 <BrowserRouter>
                     <Routes>
                         <Route path="/" element={<Home/>}/>
-                        <Route path="/answer" element={<StartForm/>}/>
-                        <Route path="/form" element={<Form/>}/>
+                        {/*admin flow*/}
+                        <Route path="/adminforms" element={<Forms/>}/>
                         <Route path="/createform" element={<CreateForm/>}/>
                         <Route path="/createfield" element={<CreateFiled/>}/>
+                        {/*user flow*/}
+                        <Route path="/answer" element={<StartForm/>}/>
                         <Route path="/forms" element={<AllForms/>}/>
-                        <Route path="/adminforms" element={<Forms/>}/>
+                        <Route path="/form" element={<Form/>}/>
                     </Routes>
                 </BrowserRouter>
             </UserProvider>

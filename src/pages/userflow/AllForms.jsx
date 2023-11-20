@@ -8,9 +8,6 @@ import {getAllForms} from "../../services/form";
 const Forms = () => {
     const {userId, setUser} = useUser();
     const [forms, setForms] = useState();
-    const [openNewForm, setOpenNewForm] = useState(false);
-    const [name, setName] = useState(null);
-    const [label, setLabel] = useState({});
 
     useEffect(() => {
         getAllForms().then(res => {
@@ -31,9 +28,6 @@ const Forms = () => {
             </ul>
             {!forms && <div>No Forms available</div>}
         </div>
-        <SubmitButton label={"Add New Form"} onClick={() => {
-            nav("/createform")
-        }}/>
     </div>;
 };
 

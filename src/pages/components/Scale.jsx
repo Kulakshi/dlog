@@ -6,6 +6,7 @@ import InfoButton from "./InfoButton";
 
 const Scale = ({key, formId, element, setValue}) => {
     const [sliderValue, setSliderValue] = useState(50);
+    const [localElem, setLocalElem] = useState(element.customLabel? element.customLabel : element.label)
 
     const handleSliderChange = (event, newValue) => {
         setSliderValue(newValue);
@@ -19,7 +20,7 @@ const Scale = ({key, formId, element, setValue}) => {
         <div className="border border-amber-950 rounded h-full flex-grow items-start flex flex-col p-2">
             <div className="flex flex-row justify-between w-full">
           {element.customLabel? element.customLabel : element.label}
-        <InfoButton formId={formId} element={element}/>
+        <InfoButton formId={formId} element={element} setElement={(element)=>setLocalElem(element)}/>
 
             </div>
         <div className="pt-5 h-full w-full flex-grow items-center justify-center">

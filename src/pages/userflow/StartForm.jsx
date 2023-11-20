@@ -21,7 +21,7 @@ const StartForm = () => {
       <SubmitButton label={"Submit"} onClick={()=> {
           login(userIdVal, team, project).then((res)=>{
               setUser(userId)
-              nav('/form')
+              nav('/forms')
           })
       }}/>
     </div>;
