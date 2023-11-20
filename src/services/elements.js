@@ -1,7 +1,7 @@
 // import {callEndpoint, postDataWithQueryParams} from "./api";
 import axios from 'axios';
+import {BASE_URL} from "../constants";
 
-const BASEURL = "http://127.0.0.1:8000/"
 export const getElementTypes = async () => {
     const url = 'element-types/get-elements/';
     return axios.get(BASEURL + url)

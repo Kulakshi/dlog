@@ -1,7 +1,7 @@
 // import {callEndpoint, postDataWithQueryParams} from "./api";
 import axios from 'axios';
+import {BASE_URL} from "../constants";
 
-const BASEURL = "http://127.0.0.1:8000/"
 export const getForms = async (user_id) => {
     const url = `admin/${user_id}/forms/`;
     return axios.get(BASEURL + url)
