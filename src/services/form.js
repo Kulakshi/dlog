@@ -5,7 +5,7 @@ import {BASE_URL} from "../constants";
 
 export const getAllForms = async () => {
     const url = `form/all/`;
-    return axios.get(BASEURL + url)
+    return axios.get(BASE_URL + url)
         .then(response => {
             return response.data;
         })
@@ -16,7 +16,7 @@ export const getAllForms = async () => {
 
 export const getForm = async (userId, formId) => {
     const url = `form/${userId}/${formId}/`;
-    return axios.get(BASEURL + url)
+    return axios.get(BASE_URL + url)
         .then(response => {
             return response.data;
         })
@@ -34,7 +34,7 @@ export const addEntry = async (userId, formId, elementId, value=null) => {
         element_id: elementId,
         value: value,  // Replace this with your actual value data
     };
-    axios.post(BASEURL+url,  requestData)
+    axios.post(BASE_URL+url,  requestData)
         .then(response => {
             console.log(response.data);
         })
@@ -53,7 +53,7 @@ export const personalizeElement = async (userId, formId, elementId, newLabel) =>
         customLabel: newLabel,
         hideLabel: false
     };
-    axios.post(BASEURL+url,  requestData)
+    axios.post(BASE_URL+url,  requestData)
         .then(response => {
             console.log(response.data);
         })
