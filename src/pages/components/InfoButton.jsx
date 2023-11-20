@@ -3,7 +3,7 @@ import { InfoRounded} from "@mui/icons-material";
 import Popover from '@mui/material/Popover';
 import ToolTip from "./ToolTip";
 
-const InfoButton = ({ label}) => {
+const InfoButton = ({formId, element}) => {
 
   const [tooltipAnchorEl, setTooltipAnchorEl] = useState(null);
 
@@ -32,7 +32,7 @@ const InfoButton = ({ label}) => {
           horizontal: 'left',
         }}
       >
-        <ToolTip onClose={handleCloseTooltip} label={label}/>
+        <ToolTip onClose={handleCloseTooltip} formId={formId} element={element}/>
       </Popover>
 
       </div>

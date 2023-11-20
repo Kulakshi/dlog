@@ -1,21 +1,38 @@
 // TooltipContent.js
-import React from 'react';
+import React, {useState} from 'react';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import {personalizeElement} from "../../services/form";
+import {useUser} from "../../contexts/UserContext";
 
-const ToolTip = ({label, onClose}) => {
-    // Your custom tooltip content goes here
+const ToolTip = ({formId, element, onClose}) => {
+
+    const [customLabel, setCustomLabel] = useState()
+    const {userId} = useUser()
+
+    const onSave = ()=>{
+        personalizeElement(userId, formId, element.element_id, customLabel).then(onClose())
+    }
+
     return (
         <Paper sx={{padding: 2}}>
-            <Typography paragraph>
-                {label}
-            </Typography>
-            <TextField label="Input Field" fullWidth margin="normal"/>
+            <div className="font-bold mb-3">
+                Original Label: {element.label}
+            </div>
+            Add your own personalized label:
+            <TextField label={element.customLabel} fullWidth margin="normal"
+                       onChange={(e)=>setCustomLabel(e.target.value)}/>
+            <div className="flex flex-end gap-4 items-center justify-end">
             <Button variant="contained" onClick={onClose}>
                 Close
             </Button>
+            <Button variant="contained" onClick={onSave}>
+                Save
+            </Button>
+
+            </div>
         </Paper>
     );
 };

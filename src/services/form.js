@@ -15,8 +15,8 @@ export const getAllForms = async () => {
         });
 };
 
-export const getForm = async (formId) => {
-    const url = `form/${formId}/`;
+export const getForm = async (userId, formId) => {
+    const url = `form/${userId}/${formId}/`;
     return axios.get(BASEURL + url)
         .then(response => {
             return response.data;
@@ -34,6 +34,25 @@ export const addEntry = async (userId, formId, elementId, value=null) => {
         form_id: formId,
         element_id: elementId,
         value: value,  // Replace this with your actual value data
+    };
+    axios.post(BASEURL+url,  requestData)
+        .then(response => {
+            console.log(response.data);
+        })
+        .catch(error => {
+            console.error(error);
+        });
+};
+
+
+export const personalizeElement = async (userId, formId, elementId, newLabel) => {
+    const url = 'form/personalize/';
+    const requestData = {
+        user_id: userId,
+        form_id: formId,
+        element_id: elementId,
+        customLabel: newLabel,
+        hideLabel: false
     };
     axios.post(BASEURL+url,  requestData)
         .then(response => {

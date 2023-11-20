@@ -4,15 +4,17 @@ import TimeStampButton from "../components/TimeStampButton";
 import {addEntry, getForm} from "../../services/form";
 import {useLocation} from "react-router-dom";
 import FormElement from "./FormElement";
+import {useUser} from "../../contexts/UserContext";
 
 
 
 const Form = () => {
     const location = useLocation()
+    const {userId} = useUser()
 
     const [form, setForm] = useState()
     useEffect(()=>{
-        getForm(location.state.form._id).then((res)=>setForm(res.response.form))
+        getForm(userId, location.state.form._id).then((res)=>setForm(res.response.form))
     },[])
 
   return <div className='bg-amber-200 flex flex-col flex-1 w-full justify-between'>

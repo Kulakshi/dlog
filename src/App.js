@@ -8,6 +8,7 @@ import CreateFiled from "./pages/adminflow/CreateFiled";
 import Forms from "./pages/adminflow/Forms";
 import {UserProvider} from './contexts/UserContext';
 import AllForms from "./pages/userflow/AllForms";
+import Home from "./pages/Home";
 
 function App() {
     return (
@@ -15,11 +16,13 @@ function App() {
             <UserProvider>
                 <BrowserRouter>
                     <Routes>
-                        <Route path="/" element={<StartForm/>}/>
+                        <Route path="/" element={<Home/>}/>
+                        <Route path="/answer" element={<StartForm/>}/>
                         <Route path="/form" element={<Form/>}/>
                         <Route path="/createform" element={<CreateForm/>}/>
                         <Route path="/createfield" element={<CreateFiled/>}/>
                         <Route path="/forms" element={<AllForms/>}/>
+                        <Route path="/adminforms" element={<Forms/>}/>
                     </Routes>
                 </BrowserRouter>
             </UserProvider>
