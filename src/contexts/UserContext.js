@@ -3,9 +3,10 @@ import {createContext, useContext, useState} from 'react';
 const UserContext = createContext();
 
 export const UserProvider = ({children}) => {
-    const [userId, setUserId] = useState("1");
+    const [userId, setUserId] = useState(null);
 
     const setUser = (id) => {
+        console.log(id)
         setUserId(id);
     };
 

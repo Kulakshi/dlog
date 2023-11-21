@@ -9,6 +9,8 @@ const FormElement = ({formId, element}) => {
     switch (element.element_type){
         case "TimeStamp":
             return <TimeStampButton key={element.element_id} formId={formId} element={element} onClick={()=>addEntry(userId,formId)}/>
+        case "Counter":
+            return <TimeStampButton key={element.element_id} formId={formId} element={element} onClick={()=>addEntry(userId,formId)}/>
         case "Slider":
             return <Scale key={element.element_id} formId={formId} element={element} setValue={(val)=>addEntry(userId, formId,element.element_id, val)}/>
         default: <></>

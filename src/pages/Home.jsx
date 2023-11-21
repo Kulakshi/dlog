@@ -9,13 +9,13 @@ const Home = () => {
     return <div className='flex flex-col flex-1 h-full w-full'>
         <button className='border border-primary m-4 h-full rounded-2xl text-lg font-normal text-primary'
             onClick={() => {
-            nav("/adminforms")
+            nav("/adminlogin")
         }}>
             I want to design a form
         </button>
         <button className='text-blue-50 bg-primary m-4 mt-0 h-full rounded-2xl text-lg font-normal'
             onClick={() => {
-            nav("/answer")
+            nav("/login")
         }}>
             I want to enter data
         </button>

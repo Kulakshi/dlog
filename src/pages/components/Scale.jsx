@@ -38,7 +38,6 @@ const Scale = ({key, formId, element, setValue}) => {
         return attribute ? attribute.value : null;
     };
 
-    // Example usage
     const min = getAttributeValue(element?.attributes, 'min');
     const max = getAttributeValue(element?.attributes, 'max');
     const step = getAttributeValue(element?.attributes, 'step');

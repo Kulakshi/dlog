@@ -5,6 +5,7 @@ import {getAllForms} from "../../services/form";
 import {CircularProgress} from "@mui/material";
 import Header from "../components/Header";
 import ListItem from "../components/ListItem";
+import BackButton from "../components/BackButton";
 
 
 const Forms = () => {
@@ -39,6 +40,7 @@ const Forms = () => {
                 }
             </div>
         </div>
+        <BackButton backPath={"/"}/>
     </div>;
 };
 

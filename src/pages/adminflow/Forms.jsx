@@ -7,6 +7,7 @@ import {createForm, getForms} from "../../services/admin";
 import {useUser} from '../../contexts/UserContext';
 import Header from "../components/Header";
 import ListItem from "../components/ListItem";
+import BackButton from "../components/BackButton";
 
 
 const Forms = () => {
@@ -39,6 +40,7 @@ const Forms = () => {
                            onClick={() => {
                                nav("/createform")
                            }}/>
+            <BackButton backPath={"/"} top={true}/>
         </div>
     </div>;
 };

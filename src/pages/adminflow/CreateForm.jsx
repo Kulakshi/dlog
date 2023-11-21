@@ -38,12 +38,10 @@ const CreateForm = () => {
     const handleLabelInput = (e) => {
         setForm({...form, name: e.target.value})
         setName(e.target.value)
-        console.log(form, name)
     }
 
 
     const submitForm = (e) => {
-        console.log(form, name)
         if (!form.name) {
             alert("Name is required")
         } else {
@@ -60,8 +58,8 @@ const CreateForm = () => {
     const nav = useNavigate();
     return <div className='flex flex-col flex-1 h-full w-full bg-neutral'>
         <Header title={"Create New Form"}/>
-        <div className='overflow-y-scroll'>
-            <div className='flex flex-col flex-1 overflow-y-scroll p-5'>
+        <div className='overflow-y-scroll flex flex-col flex-1 justify-between p-5'>
+            <div className='flex flex-col pb-5'>
                 <div className="mb-4 flex flex-row gap-2 items-center">
                     <label className="block text-lg font-medium text-tertiary w-1/4 ml-2 text-left">
                         Form Title:
@@ -74,13 +72,13 @@ const CreateForm = () => {
                     />
                 </div>
                 {fields?.map((field) => field)}
-                <SecondaryButton className="shadow shadow-lg self-end w-1/2 m-0" label={"+ Field"} onClick={() => {
+                <SecondaryButton className="shadow shadow-lg self-end w-1/2 m-0 mt-3" label={"+ Field"} onClick={() => {
                     addElementUI()
                 }}/>
             </div>
             <div className="flex flex-row w-full gap-4">
                 <SecondaryButton className="w-1/2 mr-0" label={"Cancel"} onClick={() => {
-                    nav("/forms")
+                    nav("/adminforms")
                 }}/>
                 <PrimaryButton className="w-1/2 ml-0" label={"Submit"} onClick={submitForm}/>
             </div>

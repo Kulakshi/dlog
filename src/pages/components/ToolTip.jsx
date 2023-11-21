@@ -17,7 +17,6 @@ const ToolTip = ({formId, element, onClose, setElement}) => {
     const onSave = () => {
         personalizeElement(userId, formId, element.element_id, customLabel).then(onClose())
         setElement({...element, customLabel: customLabel})
-        console.log({...element, customLabel: customLabel})
     }
 
     return (
