@@ -6,16 +6,18 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import {personalizeElement} from "../../services/form";
 import {useUser} from "../../contexts/UserContext";
+import PrimaryButton from "./PrimaryButton";
+import SecondaryButton from "./SecondaryButton";
 
 const ToolTip = ({formId, element, onClose, setElement}) => {
 
     const [customLabel, setCustomLabel] = useState()
     const {userId} = useUser()
 
-    const onSave = ()=>{
+    const onSave = () => {
         personalizeElement(userId, formId, element.element_id, customLabel).then(onClose())
-        setElement({...element, customLabel:customLabel})
-        console.log({...element, customLabel:customLabel})
+        setElement({...element, customLabel: customLabel})
+        console.log({...element, customLabel: customLabel})
     }
 
     return (
@@ -25,14 +27,10 @@ const ToolTip = ({formId, element, onClose, setElement}) => {
             </div>
             Add your own personalized label:
             <TextField label={element.customLabel} fullWidth margin="normal"
-                       onChange={(e)=>setCustomLabel(e.target.value)}/>
+                       onChange={(e) => setCustomLabel(e.target.value)}/>
             <div className="flex flex-end gap-4 items-center justify-end">
-            <Button variant="contained" onClick={onClose}>
-                Close
-            </Button>
-            <Button variant="contained" onClick={onSave}>
-                Save
-            </Button>
+                <PrimaryButton onClick={onClose} label="Close" className="w-1/2 m-0"/>
+                <SecondaryButton onClick={onSave} label="Save" className="w-1/2 m-0"/>
 
             </div>
         </Paper>

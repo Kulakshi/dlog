@@ -1,8 +1,9 @@
 import React, {useState, useEffect} from 'react';
-import SubmitButton from "../components/SubmitButton";
+import PrimaryButton from "../components/PrimaryButton";
 import {useNavigate, useLocation, redirect} from 'react-router-dom';
 import {getElementTypes, getType, createElement} from "../../services/elements";
 import FormFields from "./FormFields";
+import {CircularProgress} from "@mui/material";
 
 
 const CreateField = ({index, setElement}) => {
@@ -11,6 +12,7 @@ const CreateField = ({index, setElement}) => {
     const [instance, setInstance] = useState(null);
     const [attributeValues, setAttributeValues] = useState({});
     const [label, setLabel] = useState({});
+    const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
         getElementTypes().then(res => {
@@ -19,10 +21,12 @@ const CreateField = ({index, setElement}) => {
     }, []);
 
     const handleTypeSelect = (type) => {
+        setIsLoading(true)
         setSelectedType(type)
         getType(type).then(res => {
             setInstance(res.response.type)
             setAttributeValues(res.response.type.attributes)
+            setIsLoading(false)
         })
     };
 
@@ -40,9 +44,10 @@ const CreateField = ({index, setElement}) => {
 
 
     const nav = useNavigate();
-    return <div className='p-2 flex flex-wrap gap-5 items-center border border-amber-600 m-1'>
+    return <div className='p-2 flex flex-wrap gap-5 border border-secondary m-1 text-lg bg-neutralVariant items-center'>
         {index}
-        <select className="left-0" onChange={(e) => handleTypeSelect(e.target.value)} value={selectedType}>
+        <select className="left-0 p-2 bg-neutralVariant border border-primary rounded items-center"
+                onChange={(e) => handleTypeSelect(e.target.value)} value={selectedType}>
             <option value="">Select a type</option>
             {types?.map(type => (
                 <option key={type} value={type}>
@@ -55,6 +60,13 @@ const CreateField = ({index, setElement}) => {
             type: "text",
             default_value: instance?.label
         }, attributeValues, handleLabelChange)}
+        {
+            isLoading && !instance && <div className="flex flex-row gap-4 items-center justify-center">
+                <CircularProgress size={30} color="primary"/>
+                Loading...
+            </div>
+        }
+
 
         <div>
             <div className="flex flex-row gap-4">

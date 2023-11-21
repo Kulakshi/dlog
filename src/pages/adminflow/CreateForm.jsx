@@ -1,9 +1,11 @@
 import React, {useState, useEffect} from 'react';
-import SubmitButton from "../components/SubmitButton";
+import PrimaryButton from "../components/PrimaryButton";
+import SecondaryButton from "../components/SecondaryButton";
 import {getFormStructures, createForm} from "../../services/admin";
 import {useUser} from '../../contexts/UserContext';
 import {useNavigate} from 'react-router-dom';
 import CreateFiled from "./CreateFiled";
+import Header from "../components/Header";
 
 
 const CreateForm = () => {
@@ -36,6 +38,7 @@ const CreateForm = () => {
     const handleLabelInput = (e) => {
         setForm({...form, name: e.target.value})
         setName(e.target.value)
+        console.log(form, name)
     }
 
 
@@ -47,7 +50,7 @@ const CreateForm = () => {
             createForm(form)
                 .then((res) => {
                     if (res?.code == 200) {
-                        nav("/forms")
+                        nav("/adminforms")
                     }
                 });
         }
@@ -55,27 +58,32 @@ const CreateForm = () => {
 
 
     const nav = useNavigate();
-    return <div className='bg-amber-200 flex flex-col flex-1 justify-between p-5 h-full w-full overflow-y-scroll'>
-        <div className="mb-4 flex flex-row gap-2 items-center">
-            <label className="block text-sm font-medium text-gray-700">
-                Title:
-            </label>
-            <input
-                type="text"
-                value={name}
-                onChange={e => handleLabelInput(e)}
-                className="mt-1 p-2 border rounded-md w-full"
-            />
-        </div>
-        {fields?.map((field) => field)}
-        <SubmitButton label={"Add Field"} onClick={() => {
-            addElementUI()
-        }}/>
-        <div className="flex flex-row gap-5 w-full m-4 justify-center">
-            <SubmitButton label={"Cancel"} onClick={() => {
-                nav("/forms")
-            }}/>
-            <SubmitButton label={"Submit"} onClick={submitForm}/>
+    return <div className='flex flex-col flex-1 h-full w-full bg-neutral'>
+        <Header title={"Create New Form"}/>
+        <div className='overflow-y-scroll'>
+            <div className='flex flex-col flex-1 overflow-y-scroll p-5'>
+                <div className="mb-4 flex flex-row gap-2 items-center">
+                    <label className="block text-lg font-medium text-tertiary w-1/4 ml-2 text-left">
+                        Form Title:
+                    </label>
+                    <input
+                        type="text"
+                        value={name}
+                        onChange={e => handleLabelInput(e)}
+                        className="mt-1 p-2 border border-secondary rounded-md w-full"
+                    />
+                </div>
+                {fields?.map((field) => field)}
+                <SecondaryButton className="shadow shadow-lg self-end w-1/2 m-0" label={"+ Field"} onClick={() => {
+                    addElementUI()
+                }}/>
+            </div>
+            <div className="flex flex-row w-full gap-4">
+                <SecondaryButton className="w-1/2 mr-0" label={"Cancel"} onClick={() => {
+                    nav("/forms")
+                }}/>
+                <PrimaryButton className="w-1/2 ml-0" label={"Submit"} onClick={submitForm}/>
+            </div>
         </div>
     </div>;
 };

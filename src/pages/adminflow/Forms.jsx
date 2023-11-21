@@ -1,10 +1,12 @@
 import React, {useState, useEffect} from 'react';
-import SubmitButton from "../components/SubmitButton";
+import PrimaryButton from "../components/PrimaryButton";
 import {useNavigate} from 'react-router-dom';
 import {getElementTypes, getType, createElement} from "../../services/elements";
 import FormFields from "./FormFields";
 import {createForm, getForms} from "../../services/admin";
 import {useUser} from '../../contexts/UserContext';
+import Header from "../components/Header";
+import ListItem from "../components/ListItem";
 
 
 const Forms = () => {
@@ -22,20 +24,22 @@ const Forms = () => {
 
 
     const nav = useNavigate();
-    return <div className='bg-amber-200 flex flex-col flex-1 justify-between p-5 h-full w-full overflow-y-scroll'>
-        <div className='pt-10'>
-            <ul className='pt-10'>
-                {forms?.map((form, i) => (
-                    <li key={form._id}>
-                        {form.name}
-                    </li>
-                ))}
-            </ul>
-            {!forms && <div>No Forms available</div>}
+    return <div className='flex flex-col flex-1 h-full w-full'>
+        <Header title={"Your Forms"}/>
+        <div className='flex flex-col flex-1 h-full w-full overflow-y-scroll justify-between'>
+            <div className=''>
+                <ul className=''>
+                    {forms?.map((form, i) => (
+                        <ListItem key={form._id} label={form.name}/>
+                    ))}
+                </ul>
+                {!forms && <div>No Forms available</div>}
+            </div>
+            <PrimaryButton label={"Add New Form"} className="m-4"
+                           onClick={() => {
+                               nav("/createform")
+                           }}/>
         </div>
-        <SubmitButton label={"Add New Form"} onClick={() => {
-            nav("/createform")
-        }}/>
     </div>;
 };
 

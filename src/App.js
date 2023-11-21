@@ -12,7 +12,7 @@ import Home from "./pages/Home";
 
 function App() {
     return (
-        <div className="App h-screen w-screen bg-blue-400 flex flex-col overflow-hidden items-center">
+        <div className="App h-screen w-screen flex flex-col overflow-hidden items-center bg-neutral text-tertiary">
             <UserProvider>
                 <BrowserRouter>
                     <Routes>
