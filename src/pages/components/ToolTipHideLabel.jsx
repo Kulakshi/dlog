@@ -1,14 +1,10 @@
-// TooltipContent.js
 import React, {useState} from 'react';
 import Paper from '@mui/material/Paper';
-import Typography from '@mui/material/Typography';
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
 import {personalizeElement} from "../../services/form";
 import {useUser} from "../../contexts/UserContext";
 import PrimaryButton from "./PrimaryButton";
 import SecondaryButton from "./SecondaryButton";
-import {Switch, ToggleButton} from "@mui/material";
+import {Switch} from "@mui/material";
 
 const ToolTipHideLabel = ({formId, onClose, initVal, callback}) => {
 

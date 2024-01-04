@@ -4,7 +4,7 @@ import Popover from '@mui/material/Popover';
 import ToolTip from "./ToolTip";
 import ToolTipHideLabel from "./ToolTipHideLabel";
 
-const InfoButton = ({formId, type, element = null, labelHidden= false, callback=null}) => {
+const InfoButton = ({formId, type, element = null, labelHidden= false, callback=null, className=null}) => {
 
     const [tooltipAnchorEl, setTooltipAnchorEl] = useState(null);
 
@@ -19,7 +19,7 @@ const InfoButton = ({formId, type, element = null, labelHidden= false, callback=
 
     return (
         <div>
-            <InfoRounded className="relative right-2 top-2" onClick={handleInfoClick}/>
+            <InfoRounded className={`relative right-2 top-2 ${className}`} onClick={handleInfoClick} />
             <Popover
                 open={openTooltip}
                 anchorEl={tooltipAnchorEl}

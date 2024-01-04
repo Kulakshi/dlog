@@ -4,6 +4,7 @@ const UserContext = createContext();
 
 export const UserProvider = ({children}) => {
     const [userId, setUserId] = useState(null);
+    const [isRecording, setIsRecording] = useState(null);
 
     useEffect(() => {
         // Try to retrieve the userId from localStorage
@@ -22,7 +23,7 @@ export const UserProvider = ({children}) => {
     };
 
     return (
-        <UserContext.Provider value={{userId, setUser}}>
+        <UserContext.Provider value={{userId, setUser, isRecording, setIsRecording}}>
             {children}
         </UserContext.Provider>
     );

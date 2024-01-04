@@ -1,16 +1,17 @@
 import React, {useEffect, useState} from 'react';
-import {addEntry, getForm} from "../../services/form";
+import {getForm, setRecording, setRecordingState} from "../../services/form";
 import {useLocation} from "react-router-dom";
 import FormElement from "./FormElement";
 import {useUser} from "../../contexts/UserContext";
 import {CircularProgress} from "@mui/material";
 import BackButton from "../components/BackButton";
 import InfoButton from "../components/InfoButton";
+import PrimaryButton from "../components/PrimaryButton";
 
 
 const Form = () => {
     const location = useLocation()
-    const {userId} = useUser()
+    const {userId, isRecording, setIsRecording} = useUser()
     const [isLoading, setIsLoading] = useState(true);
 
     const [form, setForm] = useState(null)
@@ -26,6 +27,10 @@ const Form = () => {
         loadForm()
     }, [])
 
+    const setRecording = () => {
+        setIsRecording(!isRecording)
+    }
+
     const sliders = form ? form?.elements.filter((item) => item.element_type === "Slider") : null;
     const buttons = form ? form?.elements.filter((item) => item.element_type !== "Slider") : null;
 
@@ -34,7 +39,8 @@ const Form = () => {
             form &&
             <div className='flex flex-row px-5 py-2 border-gray-400 justify-between items-center'>
                 {form.name}
-                <InfoButton formId={form._id} type={"FORM"} labelHidden={form.hide_label} callback={()=>loadForm()}/>
+                <PrimaryButton onClick={setRecording} label={isRecording ? "Stop Recording":"Start Recording"} className={`px-2 m-0 ${isRecording && "bg-red-400"}`}/>
+                <InfoButton formId={form._id} type={"FORM"} labelHidden={form.hide_label} callback={()=>loadForm()} className="top-0"/>
             </div>
         }
         <div className='flex flex-wrap flex-1 justify-around p-4 pt-0 gap-2'>

@@ -3,7 +3,7 @@ import React from 'react';
 const PrimaryButton = ({label, onClick, className}) => {
     return (
         <button
-            className={`bg-primary text-lg text-neutral p-2 rounded-md hover:bg-black
+            className={`bg-primary text-lg text-neutral p-2 rounded-md 
       focus:outline-none focus:ring focus:border-blue-300 ${className}`}
             onClick={onClick}
         >

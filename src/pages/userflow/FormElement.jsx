@@ -5,17 +5,38 @@ import Scale from "../components/Scale";
 import {useUser} from "../../contexts/UserContext";
 
 const FormElement = ({formId, element, displayLabel}) => {
-    const {userId} = useUser()
+    const {userId, isRecording} = useUser()
+
+    const submitValue = ( val = null) => {
+        if (isRecording){
+            switch (element.element_type) {
+                case "TimeStamp": {
+                    addEntry(userId,formId)
+                    break
+                }
+                case "Counter": {
+                    addEntry(userId,formId)
+                    break
+                }
+                case "Slider": {
+                    addEntry(userId, formId, element.element_id, val)
+                    break
+                }
+                default: {
+                }
+            }
+        }
+    }
     switch (element.element_type){
         case "TimeStamp":
             return <TimeStampButton key={element.element_id} formId={formId} element={element}
-                                    onClick={()=>addEntry(userId,formId)} displayLabel={displayLabel}/>
+                                    onClick={()=>submitValue()} displayLabel={displayLabel}/>
         case "Counter":
             return <TimeStampButton key={element.element_id} formId={formId} element={element}
-                                    onClick={()=>addEntry(userId,formId)} displayLabel={displayLabel}/>
+                                    onClick={()=>submitValue()} displayLabel={displayLabel}/>
         case "Slider":
             return <Scale key={element.element_id} formId={formId} element={element}
-                          setValue={(val)=>addEntry(userId, formId,element.element_id, val)} displayLabel={displayLabel}/>
+                          setValue={(val)=>submitValue(val)} displayLabel={displayLabel}/>
         default: <></>
     }
 };

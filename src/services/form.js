@@ -25,6 +25,22 @@ export const getForm = async (userId, formId) => {
         });
 };
 
+export const setRecordingState = async (userId, formId, recordingState) => {
+    const url = 'form/set_record_state/';
+    const requestData = {
+        user_id: userId,
+        form_id: formId,
+        recording_state: true
+    };
+    axios.post(BASE_URL+url,  requestData)
+        .then(response => {
+            console.log(response.data);
+        })
+        .catch(error => {
+            console.error(error);
+        });
+};
+
 export const addEntry = async (userId, formId, elementId, value=null) => {
     const url = 'form/add-entry/';
     const requestData = {

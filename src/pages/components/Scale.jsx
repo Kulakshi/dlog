@@ -46,8 +46,7 @@ const Scale = ({key, formId, element, setValue, displayLabel}) => {
         <div className="border border-amber-950 rounded h-full flex-grow items-start flex flex-col p-2" key={key}>
             <div className="flex flex-row justify-between w-full">
                 {displayLabel && element.label}
-                <InfoButton formId={formId} element={element} />
-
+                {!displayLabel && <InfoButton formId={formId} element={element} />}
             </div>
             <div className="pb-5 h-full w-full flex-grow items-center justify-center">
                 <ThemeProvider theme={theme}>

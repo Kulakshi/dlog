@@ -13,7 +13,7 @@ const TimeStampButton = ({key, formId, element, onClick, displayLabel}) => {
             >
                 {displayLabel && element.label}
             </div>
-            <InfoButton formId={formId} element={element}/>
+            {!displayLabel && <InfoButton formId={formId} element={element}/>}
 
         </button>
     );
