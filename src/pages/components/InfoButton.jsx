@@ -2,8 +2,9 @@ import React, {useState} from 'react';
 import {InfoRounded} from "@mui/icons-material";
 import Popover from '@mui/material/Popover';
 import ToolTip from "./ToolTip";
+import ToolTipHideLabel from "./ToolTipHideLabel";
 
-const InfoButton = ({formId, element, setElement}) => {
+const InfoButton = ({formId, type, element = null, labelHidden= false, callback=null}) => {
 
     const [tooltipAnchorEl, setTooltipAnchorEl] = useState(null);
 
@@ -32,7 +33,12 @@ const InfoButton = ({formId, element, setElement}) => {
                     horizontal: 'left',
                 }}
             >
-                <ToolTip onClose={handleCloseTooltip} formId={formId} element={element} setElement={setElement}/>
+                {
+                    type === "FORM" ?
+                        <ToolTipHideLabel onClose={handleCloseTooltip} formId={formId} initVal={labelHidden} callback={callback}/> :
+                        <ToolTip onClose={handleCloseTooltip} element={element}/>
+                }
+
             </Popover>
 
         </div>

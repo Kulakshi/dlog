@@ -44,14 +44,12 @@ export const addEntry = async (userId, formId, elementId, value=null) => {
 };
 
 
-export const personalizeElement = async (userId, formId, elementId, newLabel) => {
+export const personalizeElement = async (userId, formId, hideLabel) => {
     const url = 'form/personalize/';
     const requestData = {
         user_id: userId,
         form_id: formId,
-        element_id: elementId,
-        customLabel: newLabel,
-        hideLabel: false
+        hide_label: hideLabel
     };
     axios.post(BASE_URL+url,  requestData)
         .then(response => {

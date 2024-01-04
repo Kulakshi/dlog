@@ -2,9 +2,8 @@ import React, {useState} from 'react';
 import InfoButton from "./InfoButton";
 import {Slider, Box, Typography, ThemeProvider, createTheme} from '@mui/material';
 
-const Scale = ({key, formId, element, setValue}) => {
+const Scale = ({key, formId, element, setValue, displayLabel}) => {
     const [sliderValue, setSliderValue] = useState();
-    const [localElem, setLocalElem] = useState(element)
 
     const theme = createTheme({
         components: {
@@ -44,10 +43,10 @@ const Scale = ({key, formId, element, setValue}) => {
 
     return (
 
-        <div className="border border-amber-950 rounded h-full flex-grow items-start flex flex-col p-2">
+        <div className="border border-amber-950 rounded h-full flex-grow items-start flex flex-col p-2" key={key}>
             <div className="flex flex-row justify-between w-full">
-                {localElem.customLabel ? localElem.customLabel : localElem.label}
-                <InfoButton formId={formId} element={element} setElement={(element) => setLocalElem(element)}/>
+                {displayLabel && element.label}
+                <InfoButton formId={formId} element={element} />
 
             </div>
             <div className="pb-5 h-full w-full flex-grow items-center justify-center">
@@ -72,13 +71,16 @@ const Scale = ({key, formId, element, setValue}) => {
                             max={max ? parseInt(max) : 100}
                             sx={{
                                 '& .MuiSlider-thumb': {
-                                    width: 60, // Adjust the width
-                                    height: 10, // Adjust the height
+                                    width: 100, // Adjust the width
+                                    height: 20, // Adjust the height
                                     borderRadius: 0, // Set borderRadius to 0 for a rectangular shape
                                 },
                             }}
                         />
-                        min: {min}
+
+                        <span className="m-2">
+                            min: {min}
+                        </span>
                     </Box>
                 </ThemeProvider>
             </div>

@@ -1,9 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import InfoButton from "./InfoButton";
 
-const TimeStampButton = ({key, formId, element, onClick}) => {
-
-    const [localElem, setLocalElem] = useState(element)
+const TimeStampButton = ({key, formId, element, onClick, displayLabel}) => {
 
     return (
         <button key={key} className="flex flex-row bg-primary text-white p-2 rounded-md
@@ -13,9 +11,9 @@ const TimeStampButton = ({key, formId, element, onClick}) => {
                 className="w-full h-full flex items-center justify-center"
                 onClick={onClick}
             >
-                {localElem.customLabel ? localElem.customLabel : localElem.label}
+                {displayLabel && element.label}
             </div>
-            <InfoButton formId={formId} element={element} setElement={(element) => setLocalElem(element)}/>
+            <InfoButton formId={formId} element={element}/>
 
         </button>
     );
