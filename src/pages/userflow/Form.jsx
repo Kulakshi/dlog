@@ -7,6 +7,8 @@ import {CircularProgress} from "@mui/material";
 import BackButton from "../components/BackButton";
 import InfoButton from "../components/InfoButton";
 import PrimaryButton from "../components/PrimaryButton";
+import Header from "../components/Header";
+import SecondaryButton from "../components/SecondaryButton";
 
 
 const Form = () => {
@@ -37,11 +39,12 @@ const Form = () => {
     return <div className='flex flex-col flex-1 h-full w-full'>
         {
             form &&
-            <div className='flex flex-row px-5 py-2 border-gray-400 justify-between items-center'>
-                {form.name}
-                <PrimaryButton onClick={setRecording} label={isRecording ? "Stop Recording":"Start Recording"} className={`px-2 m-0 ${isRecording && "bg-red-400"}`}/>
-                <InfoButton formId={form._id} type={"FORM"} labelHidden={form.hide_label} callback={()=>loadForm()} className="top-0"/>
-            </div>
+            <Header title={form.name} backPath={"/forms"}>
+                     <div className="flex flex-row items-center gap-4">
+                        <SecondaryButton onClick={setRecording} label={isRecording ? "Stop Recording":"Start Recording"} className={`px-2 m-0 ${isRecording && "bg-red-400 text-white"}`}/>
+                        <InfoButton formId={form._id} type={"FORM"} labelHidden={form.hide_label} callback={()=>loadForm()} className="top-0"/>
+                     </div>
+            </Header>
         }
         <div className='flex flex-wrap flex-1 justify-around p-4 pt-0 gap-2'>
             {
@@ -73,7 +76,6 @@ const Form = () => {
                 "Error loading the form"
             }
         </div>
-            <BackButton backPath={"/forms"}/>
     </div>;
 };
 

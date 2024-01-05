@@ -1,13 +1,14 @@
 import React from 'react';
-import SecondaryButton from "./SecondaryButton";
 import {useNavigate} from "react-router-dom";
-import PrimaryButton from "./PrimaryButton";
+import {ArrowBack} from "@mui/icons-material";
 
-const BackButton = ({backPath, top=false}) => {
+const BackButton = ({backPath}) => {
     let nav = useNavigate()
     return (
-        <SecondaryButton label={"<"} onClick={() => nav(backPath, {replace: true})}
-                         className={`p-0 w-10 absolute ${top ? "top-2 left-2" :  "bottom-2 left-2" }`}/>
+        <div onClick={() => nav(backPath, {replace: true})}
+                         className="p-0 w-10">
+            <ArrowBack/>
+        </div>
     );
 };
 

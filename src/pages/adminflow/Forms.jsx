@@ -1,13 +1,10 @@
 import React, {useState, useEffect} from 'react';
 import PrimaryButton from "../components/PrimaryButton";
 import {useNavigate} from 'react-router-dom';
-import {getElementTypes, getType, createElement} from "../../services/elements";
-import FormFields from "./FormFields";
 import {createForm, getForms} from "../../services/admin";
 import {useUser} from '../../contexts/UserContext';
 import Header from "../components/Header";
 import ListItem from "../components/ListItem";
-import BackButton from "../components/BackButton";
 
 
 const Forms = () => {
@@ -26,7 +23,7 @@ const Forms = () => {
 
     const nav = useNavigate();
     return <div className='flex flex-col flex-1 h-full w-full'>
-        <Header title={"Your Forms"}/>
+        <Header title={"Your Forms"} backPath={"/"}/>
         <div className='flex flex-col flex-1 h-full w-full overflow-y-scroll justify-between'>
             <div className=''>
                 <ul className=''>
@@ -40,7 +37,6 @@ const Forms = () => {
                            onClick={() => {
                                nav("/createform")
                            }}/>
-            <BackButton backPath={"/"} top={true}/>
         </div>
     </div>;
 };

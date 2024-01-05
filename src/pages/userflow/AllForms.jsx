@@ -23,7 +23,7 @@ const Forms = () => {
 
     const nav = useNavigate();
     return <div className='flex flex-col flex-1 h-full w-full'>
-        <Header title={"Select Form"}/>
+        <Header title={"Select Form"} backPath={"/"}/>
         <div className='flex flex-col flex-1 justify-between p-5 h-full w-full overflow-y-scroll'>
             <div className=''>
                 <ul className=''>
@@ -40,7 +40,6 @@ const Forms = () => {
                 }
             </div>
         </div>
-        <BackButton backPath={"/"}/>
     </div>;
 };
 
