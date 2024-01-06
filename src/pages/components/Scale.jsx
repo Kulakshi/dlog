@@ -50,7 +50,7 @@ const Scale = ({key, formId, element, setValue, displayLabel}) => {
             </div>
             <div className="pb-5 h-full w-full flex-grow items-center justify-center">
                 <ThemeProvider theme={theme}>
-                    max: {max}
+                    max: {max && max>=min ? parseInt(max) : 100}
                     <Box sx={{display: 'flex', flexDirection: 'column', alignItems: 'center'}} className="h-full">
                         <Typography id="vertical-slider" gutterBottom variant="h4">
                             {sliderValue}
@@ -67,7 +67,7 @@ const Scale = ({key, formId, element, setValue, displayLabel}) => {
                             step={step ? parseInt(step) : 1}
                             marks
                             min={min ? parseInt(min) : 0}
-                            max={max ? parseInt(max) : 100}
+                            max={max && max>=min ? parseInt(max) : 100}
                             sx={{
                                 '& .MuiSlider-thumb': {
                                     width: 100, // Adjust the width
@@ -78,7 +78,7 @@ const Scale = ({key, formId, element, setValue, displayLabel}) => {
                         />
 
                         <span className="m-2">
-                            min: {min}
+                            min: {min ? parseInt(min) : 0}
                         </span>
                     </Box>
                 </ThemeProvider>

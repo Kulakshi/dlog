@@ -11,11 +11,11 @@ const FormElement = ({formId, element, displayLabel}) => {
         if (isRecording){
             switch (element.element_type) {
                 case "TimeStamp": {
-                    addEntry(userId,formId)
+                    addEntry(userId,formId, element.element_id)
                     break
                 }
                 case "Counter": {
-                    addEntry(userId,formId)
+                    addEntry(userId,formId, element.element_id)
                     break
                 }
                 case "Slider": {

@@ -1,12 +1,10 @@
 import React, {useEffect, useState} from 'react';
-import {getForm, setRecording, setRecordingState} from "../../services/form";
+import {getForm} from "../../services/form";
 import {useLocation} from "react-router-dom";
 import FormElement from "./FormElement";
 import {useUser} from "../../contexts/UserContext";
 import {CircularProgress} from "@mui/material";
-import BackButton from "../components/BackButton";
 import InfoButton from "../components/InfoButton";
-import PrimaryButton from "../components/PrimaryButton";
 import Header from "../components/Header";
 import SecondaryButton from "../components/SecondaryButton";
 

@@ -59,6 +59,17 @@ export const addEntry = async (userId, formId, elementId, value=null) => {
         });
 };
 
+export const getEntries = async (userId, formId) => {
+    const url = `form/get-entries/${userId}/${formId}/`;
+    return axios.get(BASE_URL + url)
+        .then(response => {
+            return response.data;
+        })
+        .catch(error => {
+            console.error(error);
+        });
+};
+
 
 export const personalizeElement = async (userId, formId, hideLabel) => {
     const url = 'form/personalize/';

@@ -8,6 +8,7 @@ import ListItem from "../components/ListItem";
 
 
 const Forms = () => {
+    const nav = useNavigate();
     const {userId, setUser} = useUser();
     const [forms, setForms] = useState();
     const [openNewForm, setOpenNewForm] = useState(false);
@@ -21,14 +22,15 @@ const Forms = () => {
     }, []);
 
 
-    const nav = useNavigate();
     return <div className='flex flex-col flex-1 h-full w-full'>
         <Header title={"Your Forms"} backPath={"/"}/>
         <div className='flex flex-col flex-1 h-full w-full overflow-y-scroll justify-between'>
             <div className=''>
                 <ul className=''>
                     {forms?.map((form, i) => (
-                        <ListItem key={form._id} label={form.name}/>
+                        <ListItem key={form._id} label={form.name} onClick={() => {
+                               nav("/dashboard", {state: {form: form}})
+                           }}/>
                     ))}
                 </ul>
                 {!forms && <div>No Forms available</div>}
