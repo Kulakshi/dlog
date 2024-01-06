@@ -9,7 +9,7 @@ const Home = () => {
     return <div className='flex flex-col flex-1 h-full w-full'>
         <button className='border border-primary m-4 h-full rounded-2xl text-lg font-normal text-primary'
             onClick={() => {
-            nav("/adminlogin")
+            nav("/admin/login")
         }}>
             I want to design a form
         </button>

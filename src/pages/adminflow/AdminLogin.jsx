@@ -20,8 +20,8 @@ const AdminLogin = () => {
             <PrimaryButton label={"Submit"} className="m-4"
                            onClick={() => {
                                login(userIdVal, "admin", "admin").then((res) => {
-                                   setUser(userIdVal)
-                                   nav('/adminforms')
+                                   setUser(userIdVal, "ADMIN")
+                                   nav('/admin/forms')
                                })
                            }}/>
         </div>

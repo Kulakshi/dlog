@@ -24,7 +24,7 @@ const Login = () => {
             <PrimaryButton label={"Submit"} className="m-4"
                            onClick={() => {
                                login(userIdVal, team, project).then((res) => {
-                                   setUser(userIdVal)
+                                   setUser(userIdVal, "USER")
                                    nav('/forms')
                                })
                            }}/>

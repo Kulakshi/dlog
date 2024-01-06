@@ -47,7 +47,7 @@ const FormDashboard = () => {
             <Header title={`${form.name} - Summary`} backPath={"/forms"}>
                      <div className="flex flex-row items-center gap-4">
                         <SecondaryButton onClick={() => {
-                               nav("/createform", {state: {form: form}})
+                               nav("/admin/createform", {state: {form: form}})
                            }} label={"Edit Form"} className={`px-2 m-0 ${isRecording && "bg-red-400 text-white"}`}/>
                      </div>
             </Header>

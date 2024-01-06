@@ -20,11 +20,11 @@ function App() {
                     <Routes>
                         <Route path="/" element={<Home/>}/>
                         {/*admin flow*/}
-                        <Route path="/adminlogin" element={<AdminLogin/>}/>
-                        <Route path="/adminforms" element={<Forms/>}/>
-                        <Route path="/dashboard" element={<FormDashboard/>}/>
-                        <Route path="/createform" element={<CreateForm/>}/>
-                        <Route path="/createfield" element={<CreateFiled/>}/>
+                        <Route path="/admin/login" element={<AdminLogin/>}/>
+                        <Route path="/admin/forms" element={<Forms/>}/>
+                        <Route path="/admin/dashboard" element={<FormDashboard/>}/>
+                        <Route path="/admin/createform" element={<CreateForm/>}/>
+                        <Route path="/admin/createfield" element={<CreateFiled/>}/>
                         {/*user flow*/}
                         <Route path="/login" element={<Login/>}/>
                         <Route path="/forms" element={<AllForms/>}/>

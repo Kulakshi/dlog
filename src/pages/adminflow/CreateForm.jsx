@@ -48,7 +48,7 @@ const CreateForm = () => {
             createForm(form)
                 .then((res) => {
                     if (res?.code == 200) {
-                        nav("/adminforms")
+                        nav("/admin/forms")
                     }
                 });
         }
@@ -78,7 +78,7 @@ const CreateForm = () => {
             </div>
             <div className="flex flex-row w-full gap-4">
                 <SecondaryButton className="w-1/2 mr-0" label={"Cancel"} onClick={() => {
-                    nav("/adminforms")
+                    nav("/admin/forms")
                 }}/>
                 <PrimaryButton className="w-1/2 ml-0" label={"Submit"} onClick={submitForm}/>
             </div>
