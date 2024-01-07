@@ -6,6 +6,7 @@ import {useUser} from '../../contexts/UserContext';
 import {useNavigate} from 'react-router-dom';
 import CreateFiled from "./CreateFiled";
 import Header from "../components/Header";
+import {v4 as uuidv4} from 'uuid';
 
 
 const CreateForm = () => {
@@ -13,7 +14,6 @@ const CreateForm = () => {
     const [name, setName] = useState("");
     const [elements, setElements] = useState({});
     const [form, setForm] = useState(null);
-    const [fields, setFields] = useState([]);
 
 
     useEffect(() => {
@@ -22,29 +22,32 @@ const CreateForm = () => {
         })
     }, [])
 
-    const addElementUI = () => {
-        let index = fields.length
-        setFields([...fields, <CreateFiled key={index} index={index} setElement={addElement}/>])
+    const addElement = () => {
+        elements[uuidv4()] = {}
+        setElements({...elements})
     }
-    const addElement = (index, element) => {
-        elements[index] = element
-        setElements(elements)
-        let values = Object.keys(elements).map(function (key) {
-            return elements[key];
-        });
-        setForm({...form, elements: values})
+    const updateElement = (id, element) => {
+        elements[id] = element
+        setElements({...elements})
+    }
+    const removeElement = (id) => {
+        if(elements.hasOwnProperty(id)){
+            delete elements[id]
+        }
+        setElements({...elements})
     }
 
     const handleLabelInput = (e) => {
-        setForm({...form, name: e.target.value})
         setName(e.target.value)
     }
 
 
     const submitForm = (e) => {
-        if (!form.name) {
+        if (!name) {
             alert("Name is required")
         } else {
+            let values = Object.values(elements)
+            setForm({...form, name: name, elements: values})
             createForm(form)
                 .then((res) => {
                     if (res?.code == 200) {
@@ -54,15 +57,14 @@ const CreateForm = () => {
         }
     }
 
-
     const nav = useNavigate();
     return <div className='flex flex-col flex-1 h-full w-full bg-neutral'>
-        <Header title={"Create New Form"}  backPath={"/admin/forms"}/>
+        <Header title={"Create New Form"} backPath={"/admin/forms"}/>
         <div className='overflow-y-scroll flex flex-col flex-1 justify-between p-5'>
             <div className='flex flex-col pb-5'>
                 <div className="mb-4 flex flex-row gap-2 items-center">
-                    <label className="block text-lg font-medium text-tertiary w-1/4 ml-2 text-left">
-                        Form Title:
+                    <label className="block text-lg font-medium text-tertiary w-fit ml-2 text-left">
+                        Title:
                     </label>
                     <input
                         type="text"
@@ -71,9 +73,11 @@ const CreateForm = () => {
                         className="mt-1 p-2 border border-secondary rounded-md w-full"
                     />
                 </div>
-                {fields?.map((field) => field)}
+                {Object.keys(elements)?.map((id) =>
+                    <CreateFiled key={id} id={id} setElement={updateElement} removeElement={removeElement}/>
+                )}
                 <SecondaryButton className="shadow shadow-lg self-end w-1/2 m-0 mt-3" label={"+ Field"} onClick={() => {
-                    addElementUI()
+                    addElement()
                 }}/>
             </div>
             <div className="flex flex-row w-full gap-4">

@@ -4,9 +4,10 @@ import {useNavigate, useLocation, redirect} from 'react-router-dom';
 import {getElementTypes, getType, createElement} from "../../services/elements";
 import FormFields from "./FormFields";
 import {CircularProgress} from "@mui/material";
+import {Close} from "@mui/icons-material";
 
 
-const CreateField = ({index, setElement}) => {
+const CreateField = ({id, setElement, removeElement}) => {
     const [types, setTypes] = useState();
     const [selectedType, setSelectedType] = useState();
     const [instance, setInstance] = useState(null);
@@ -35,17 +36,17 @@ const CreateField = ({index, setElement}) => {
             attribute.name === name ? {...attribute, value} : attribute
         );
         setAttributeValues(newValues);
-        setElement(index, {...instance, attributes: newValues, label: label})
+        setElement(id, {...instance, attributes: newValues, label: label})
     };
     const handleLabelChange = (name, value) => {
         setLabel(value);
-        setElement(index, {...instance, attributes: attributeValues, label: value})
+        setElement(id, {...instance, attributes: attributeValues, label: value})
     };
 
 
     const nav = useNavigate();
-    return <div className='p-2 flex flex-wrap gap-5 border border-secondary m-1 text-lg bg-neutralVariant items-center'>
-        {index}
+    return <div className='relative p-2 border border-secondary m-1 text-lg bg-neutralVariant' key={id}>
+        <div className='flex flex-wrap gap-5 text-lg items-center'>
         <select className="left-0 p-2 bg-neutralVariant border border-primary rounded items-center"
                 onChange={(e) => handleTypeSelect(e.target.value)} value={selectedType}>
             <option value="">Select a type</option>
@@ -72,6 +73,16 @@ const CreateField = ({index, setElement}) => {
             <div className="flex flex-row gap-4">
                 {instance && instance?.attributes && instance.attributes?.map((attribute, i) => FormFields(i, attribute, attributeValues, handleAttributeChange))}
             </div>
+        </div>
+        </div>
+
+        <div className="absolute top-0 right-0" onClick={()=> {
+            const res = window.confirm("Are you sure you want to remove this field?")
+            if (res) {
+                removeElement(id)
+            }
+        }}>
+            <Close/>
         </div>
     </div>;
 };

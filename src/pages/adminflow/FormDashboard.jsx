@@ -42,13 +42,7 @@ const FormDashboard = () => {
     return <div className='flex flex-col flex-1 h-full w-full'>
         {
             form &&
-            <Header title={`${form.name} - Summary`} backPath={"/admin/forms"}>
-                     <div className="flex flex-row items-center gap-4">
-                        <SecondaryButton onClick={() => {
-                               nav("/admin/createform", {state: {form: form}})
-                           }} label={"Edit Form"} className={`px-2 m-0 ${isRecording && "bg-red-400 text-white"}`}/>
-                     </div>
-            </Header>
+            <Header title={`${form.name} - Summary`} backPath={"/admin/forms"}/>
         }
         <div className='flex flex-col flex-1 p-4 pt-0 gap-2 overflow-y-scroll'>
             <div className="flex flex-row gap-5 justify-between">
