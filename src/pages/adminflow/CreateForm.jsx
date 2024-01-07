@@ -57,7 +57,7 @@ const CreateForm = () => {
 
     const nav = useNavigate();
     return <div className='flex flex-col flex-1 h-full w-full bg-neutral'>
-        <Header title={"Create New Form"}/>
+        <Header title={"Create New Form"}  backPath={"/admin/forms"}/>
         <div className='overflow-y-scroll flex flex-col flex-1 justify-between p-5'>
             <div className='flex flex-col pb-5'>
                 <div className="mb-4 flex flex-row gap-2 items-center">

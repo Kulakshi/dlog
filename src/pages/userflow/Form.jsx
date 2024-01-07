@@ -38,7 +38,7 @@ const Form = () => {
         {
             form &&
             <Header title={form.name} backPath={"/forms"}>
-                     <div className="flex flex-row items-center gap-4">
+                     <div className="flex flex-row items-center gap-4 justify-center">
                         <SecondaryButton onClick={setRecording} label={isRecording ? "Stop Recording":"Start Recording"} className={`px-2 m-0 ${isRecording && "bg-red-400 text-white"}`}/>
                         <InfoButton formId={form._id} type={"FORM"} labelHidden={form.hide_label} callback={()=>loadForm()} className="top-0"/>
                      </div>

@@ -39,12 +39,10 @@ const FormDashboard = () => {
         loadEntries()
     }, [])
 
-    const sliders = form ? form?.elements.filter((item) => item.element_type === "Slider") : null;
-
     return <div className='flex flex-col flex-1 h-full w-full'>
         {
             form &&
-            <Header title={`${form.name} - Summary`} backPath={"/forms"}>
+            <Header title={`${form.name} - Summary`} backPath={"/admin/forms"}>
                      <div className="flex flex-row items-center gap-4">
                         <SecondaryButton onClick={() => {
                                nav("/admin/createform", {state: {form: form}})

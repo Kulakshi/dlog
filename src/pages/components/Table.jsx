@@ -18,7 +18,7 @@ const Table = ({data}) => {
                         </thead>
                         <tbody>
                         {
-                            data && data.slice(1).map((row)=> <tr>
+                            data && data.map((row)=> <tr>
                                 {
                                     keys.map((key)=> <td className="border p-2">{row[key]}</td>)
                                 }

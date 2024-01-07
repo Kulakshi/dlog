@@ -19,7 +19,7 @@ const InfoButton = ({formId, type, element = null, labelHidden= false, callback=
 
     return (
         <div>
-            <InfoRounded className={`relative right-2 top-2 ${className}`} onClick={handleInfoClick} />
+            <InfoRounded className={`${className}`} onClick={handleInfoClick} />
             <Popover
                 open={openTooltip}
                 anchorEl={tooltipAnchorEl}
