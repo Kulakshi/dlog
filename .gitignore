@@ -45,3 +45,7 @@ node_modules/
 .vscode/
 
 .idea/
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/

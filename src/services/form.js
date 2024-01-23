@@ -71,12 +71,13 @@ export const getEntries = async (userId, formId) => {
 };
 
 
-export const personalizeElement = async (userId, formId, hideLabel) => {
+export const personalizeElement = async (userId, formId, hideLabel, layout) => {
     const url = 'form/personalize/';
     const requestData = {
         user_id: userId,
         form_id: formId,
-        hide_label: hideLabel
+        hide_label: hideLabel,
+        layout: layout
     };
     axios.post(BASE_URL+url,  requestData)
         .then(response => {

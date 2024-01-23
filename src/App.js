@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import Login from './pages/userflow/Login';
-import Form from "./pages/userflow/Form";
+import Form from "./pages/userflow/Form/Form";
 import CreateForm from "./pages/adminflow/CreateForm";
 import CreateFiled from "./pages/adminflow/CreateFiled";
 import Forms from "./pages/adminflow/Forms";
@@ -14,7 +14,7 @@ import FormDashboard from "./pages/adminflow/FormDashboard";
 
 function App() {
     return (
-        <div className="App h-screen w-screen flex flex-col overflow-hidden items-center bg-neutral text-tertiary">
+        <div className="App h-screen w-screen flex flex-col overflow-hidden items-center bg-neutral text-tertiary -m-5">
             <UserProvider>
                 <BrowserRouter>
                     <Routes>
