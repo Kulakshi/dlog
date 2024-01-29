@@ -23,10 +23,14 @@ const Login = () => {
             </div>
             <PrimaryButton label={"Submit"} className="m-2"
                            onClick={() => {
-                               login(userIdVal, team, project).then((res) => {
-                                   setUser(userIdVal, "USER")
-                                   nav('/forms')
-                               })
+                               if(userIdVal && userIdVal.trim() !== "") {
+                                   login(userIdVal, team, project).then((res) => {
+                                       setUser(userIdVal, "USER")
+                                       nav('/forms')
+                                   })
+                               } else {
+                                   alert("User id is required")
+                               }
                            }}/>
         </div>
     </div>;

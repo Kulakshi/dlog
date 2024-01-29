@@ -43,7 +43,7 @@ const Scale = ({key, formId, element, setValue, displayLabel}) => {
 
     return (
 
-        <div className="border border-amber-950 rounded h-full flex-grow items-start flex flex-col p-2" key={key}>
+        <div className="border border-amber-950 rounded h-full flex-grow items-start flex flex-col p-2 bg-neutralVariant" key={key}>
             <div className="flex flex-row justify-between w-full">
                 {displayLabel && element.label}
                 {!displayLabel && <InfoButton formId={formId} element={element} />}

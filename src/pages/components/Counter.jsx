@@ -24,7 +24,7 @@ const TimeStampButton = ({key, formId, element, setValue, displayLabel}) => {
         <div key={key} className="flex flex-col bg-primary text-white p-2 rounded-md
           focus:outline-none focus:ring focus:border-tertiary justify-between
           flex-grow items-center">
-            <div className="flex flex-row mb-3">
+            <div className="flex flex-row mb-3 text-sm">
                 <p>{displayLabel && element.label}</p>
                 {!displayLabel && <InfoButton formId={formId} element={element}/>}
             </div>
