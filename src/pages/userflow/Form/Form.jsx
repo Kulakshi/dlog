@@ -50,6 +50,22 @@ const Form = () => {
 
     }
 
+    const updateItemsLayout = (elements, layout) => {
+        if(elements?.length < 1 || elements?.length !== layout?.length) return
+
+        const idxToLayout = layout.reduce((acc, item) => {
+              acc[item.i] = item;
+              return acc;
+            }, {});
+         const items = elements?.map((item, i) => {
+                    return {
+                            ...item,
+                            layout: idxToLayout[item.element_id]
+                        }
+                });
+        setItems(items)
+    }
+
     useEffect(() => {
         if (userId) loadForm()
     }, [userId])
@@ -68,15 +84,11 @@ const Form = () => {
 
     const updateHideLabel = (checked) => {
         personalizeElement(userId, form._id, checked, layout)
-            .then(res =>
-            loadForm()
-        )
-        // setHideLabel(checked)
     }
 
     const onLayoutChange = (layout) => {
         setLayout(layout)
-
+        updateItemsLayout(items, layout)
     }
 
 
@@ -86,8 +98,6 @@ const Form = () => {
                 <>
                     <Header title={form.name} backPath={"/forms"}>
                         <div className="flex flex-row items-center gap-4 justify-center text-white">
-                            {/*<SecondaryButton onClick={setEditMode} label={editModeOn ? "Save layout" : "Edit layout"}*/}
-                            {/*                 className={`px-2 m-0 ${editModeOn && "bg-red-400 text-white"}`}/>*/}
                             {editModeOn ?
                                 <Save onClick={setEditMode}/>
                                 :
@@ -98,10 +108,6 @@ const Form = () => {
                                 :
                                 <PlayCircle className="text-red-300" onClick={setRecording}/>
                             }
-
-                            {/*<SecondaryButton onClick={setRecording}*/}
-                            {/*                 label={isRecording ? "Stop Recording" : "Start Recording"}*/}
-                            {/*                 className={`px-2 m-0 ${isRecording && "bg-red-400 text-white"}`}/>*/}
                             <Switch checked={hideLable} defaultChecked
                                     onChange={(e) => updateHideLabel(e.target.checked)}/>
                         </div>
