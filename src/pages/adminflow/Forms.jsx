@@ -17,9 +17,10 @@ const Forms = () => {
 
     useEffect(() => {
         getForms(userId).then(res => {
-            setForms(res.response.forms)
+            const forms = res.response.forms
+            if (forms && forms.length > 0) setForms(res.response.forms)
         })
-    }, []);
+    }, [userId]);
 
 
     return <div className='flex flex-col flex-1 h-full w-full'>

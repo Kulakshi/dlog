@@ -34,3 +34,20 @@ export const createForm = async (form) => {
             console.error(error);
         });
 };
+
+export const setFormLayout = async (userId, formId, hideLabel, layout) => {
+    const url = 'admin/set-layout/';
+    const requestData = {
+        user_id: userId,
+        form_id: formId,
+        hide_label: hideLabel,
+        layout: layout
+    };
+    axios.post(BASE_URL+url,  requestData)
+        .then(response => {
+            console.log(response.data);
+        })
+        .catch(error => {
+            console.error(error);
+        });
+};

@@ -14,14 +14,14 @@ import CsvDownloadButton from 'react-json-to-csv'
 const FormDashboard = () => {
     const location = useLocation()
     const nav = useNavigate();
-    const {userId, isRecording, setIsRecording} = useUser()
+    const {userRole, userId} = useUser()
     const [isLoading, setIsLoading] = useState(true);
 
     const [data, setData] = useState([])
     const [form, setForm] = useState(null)
 
     const loadForm = ()=> {
-        getForm(userId, location.state.form._id)
+        getForm(userRole, userId, location.state.form._id)
             .then((res) => {
                 setForm(res?.response.form)
                 setIsLoading(false)
@@ -35,22 +35,26 @@ const FormDashboard = () => {
             })
     }
     useEffect(() => {
-        loadForm()
+        if (!form) loadForm()
         loadEntries()
     }, [])
 
+    console.log(form)
     return <div className='flex flex-col flex-1 h-full w-full'>
         {
             form &&
             <Header title={`${form.name} - Summary`} backPath={"/admin/forms"}/>
         }
-        <div className='flex flex-col flex-1 p-4 pt-0 gap-2 overflow-y-scroll'>
+        <div className='flex flex-col flex-1 p-4 py-1 gap-2 overflow-y-scroll'>
             <div className="flex flex-row gap-5 justify-between">
                 <div className="flex flex-row gap-5">
                     <p className="left-0"><span className="font-bold">No of Entries: </span> {data && data?.count} </p>
                     <p className="start-0"><span className="font-bold">No of Users: </span> {data && data?.user_count} </p>
                 </div>
-                <CsvDownloadButton className="bg-neutral text-lg text-primary border border-primary p-2 rounded-md" data={data?.all} />
+                <div className="flex flex-row gap-2 justify-between">
+                    <SecondaryButton label="Edit Layout" onClick={()=> nav("/admin/editform", {state: {form: form}})}/>
+                    <CsvDownloadButton className="bg-neutral text-lg text-primary border border-primary p-2 rounded-md" data={data?.all} />
+                </div>
             </div>
             {
                 data && <Table data={data?.all}/>

@@ -6,7 +6,7 @@ const Table = ({data}) => {
     const keys = data && data.length > 0 ? Object.keys(data[0]) : null
 
     return (
-        <div className="flex flex-col max-w-full max-h-full border my-2">
+        <div className="flex flex-col max-w-full max-h-full border my-1">
             <div className="flex-grow overflow-auto ">
                 {
                     keys &&

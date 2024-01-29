@@ -22,6 +22,7 @@ function App() {
                         {/*admin flow*/}
                         <Route path="/admin/login" element={<AdminLogin/>}/>
                         <Route path="/admin/forms" element={<Forms/>}/>
+                        <Route path="/admin/editform" element={<Form/>}/>
                         <Route path="/admin/dashboard" element={<FormDashboard/>}/>
                         <Route path="/admin/createform" element={<CreateForm/>}/>
                         <Route path="/admin/createfield" element={<CreateFiled/>}/>

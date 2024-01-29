@@ -14,8 +14,8 @@ export const getAllForms = async () => {
         });
 };
 
-export const getForm = async (userId, formId) => {
-    const url = `form/${userId}/${formId}/`;
+export const getForm = async (userRole, userId, formId) => {
+    const url = `form/${userRole}/${userId}/${formId}/`;
     return axios.get(BASE_URL + url)
         .then(response => {
             return response.data;

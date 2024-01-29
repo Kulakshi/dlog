@@ -11,12 +11,13 @@ import Header from "../../components/Header";
 import SecondaryButton from "../../components/SecondaryButton";
 import {Responsive, WidthProvider} from "react-grid-layout";
 import {Edit, Pause, PauseCircle, PlayArrow, PlayCircle, RecordVoiceOver, Save, Square} from "@mui/icons-material";
+import {setFormLayout} from "../../../services/admin";
 
 
 const ResponsiveGridLayout = WidthProvider(Responsive);
 const Form = () => {
     const location = useLocation()
-    const {userId, isRecording, setIsRecording} = useUser()
+    const {userId, userRole, isRecording, setIsRecording} = useUser()
     const [isLoading, setIsLoading] = useState(true);
     const [editModeOn, setEditModeOn] = useState(false);
     const [layout, setLayout] = useState([]);
@@ -26,7 +27,8 @@ const Form = () => {
     const [hideLable, setHideLabel] = useState(null)
 
     const loadForm = () => {
-        getForm(userId, location.state.form._id)
+        console.log(userRole, userId, location.state.form._id)
+        userRole && getForm(userRole, userId, location.state.form._id)
             .then((res) => {
                 const form = res?.response.form
                 setForm(form)
@@ -75,9 +77,10 @@ const Form = () => {
     }
     const setEditMode = () => {
         if (editModeOn) {
-            personalizeElement(userId, form._id, hideLable, layout).then(res =>
-                loadForm()
-            )
+            userRole === "ADMIN" ?
+                setFormLayout(userId, form._id, hideLable, layout)
+                :
+                personalizeElement(userId, form._id, hideLable, layout)
         }
         setEditModeOn(!editModeOn)
     }
@@ -96,20 +99,24 @@ const Form = () => {
         {
             form ?
                 <>
-                    <Header title={form.name} backPath={"/forms"}>
+                    <Header title={form.name} backPath={userRole === "ADMIN" ? "/admin/dashboard":"/forms"} backData={{form:form}}>
                         <div className="flex flex-row items-center gap-4 justify-center text-white">
                             {editModeOn ?
                                 <Save onClick={setEditMode}/>
                                 :
                                 <Edit onClick={setEditMode}/>
                             }
-                            {isRecording ?
-                                <PauseCircle onClick={setRecording}/>
-                                :
-                                <PlayCircle className="text-red-300" onClick={setRecording}/>
+                            {userRole !== "ADMIN" &&
+                                <>
+                                    {isRecording ?
+                                        <PauseCircle onClick={setRecording}/>
+                                        :
+                                        <PlayCircle className="text-red-300" onClick={setRecording}/>
+                                    }
+                                </>
                             }
-                            <Switch checked={hideLable} defaultChecked
-                                    onChange={(e) => updateHideLabel(e.target.checked)}/>
+                           {userRole !== "ADMIN" && <Switch checked={hideLable} defaultChecked
+                                    onChange={(e) => updateHideLabel(e.target.checked)}/>}
                         </div>
                     </Header>
                     <div className='flex flex-1 justify-around overflow-auto'>

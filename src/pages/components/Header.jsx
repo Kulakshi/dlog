@@ -4,7 +4,7 @@ import {DragHandle, Menu, MenuOpen} from "@mui/icons-material";
 import Drawer from "./Drawer";
 import {useUser} from "../../contexts/UserContext";
 
-const Header = ({title, backPath, children}) => {
+const Header = ({title, backPath, backData, children}) => {
     const {userId} = useUser()
     const [drawerVisible, setDrawerVisible] = useState(false)
 
@@ -18,7 +18,7 @@ const Header = ({title, backPath, children}) => {
             <div className="flex flex-row items-center gap-2" onClick={onOffDrawer}>
                 {userId && !drawerVisible && <Menu onClick={onOffDrawer}/>}
                 {userId && drawerVisible && <MenuOpen onClick={onOffDrawer}/>}
-                {backPath && <BackButton backPath={backPath}/>}
+                {backPath && <BackButton backPath={backPath} backData={backData}/>}
                 {title}
             </div>
             {children}
