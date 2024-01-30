@@ -6,6 +6,7 @@ import {getAllUsers, login} from "../../services/user";
 import {useUser} from "../../contexts/UserContext";
 import Header from "../components/Header";
 import Select from 'react-select';
+import {AddBoxOutlined, AddOutlined, ExpandLessOutlined} from "@mui/icons-material";
 
 
 const Login = () => {
@@ -14,6 +15,7 @@ const Login = () => {
     const [team, setTeam] = useState(null)
     const [project, setProject] = useState(null)
     const [users, setUsers] = useState(null)
+    const [showAddNew, setShowAddNew] = useState(false)
     const nav = useNavigate();
 
     useEffect(() => {
@@ -36,18 +38,27 @@ const Login = () => {
             <div className=''>
                 <div className="p-1 px-4 flex flex-row items-center gap-2 w-full justify-between">
                     ID
-                    <Select
-                        className="w-5/6 text-left"
-                        options={users}
-                        isSearchable
-                        placeholder="Search..."
-                        onChange={(user) => {
-                            setUserIdVal(user.value)
-                        }}
-                    />
-                </div>
+                    <div className="flex flex-row gap-2 w-5/6 items-center">
+                         <Select
+                            className="w-full text-left"
+                            options={users}
+                            isSearchable
+                            placeholder="Search..."
+                            onChange={(user) => {
+                                setUserIdVal(user.value)
+                            }}
+                            isDisabled={showAddNew}
+                        />
+                        {
+                            showAddNew ?
+                                <ExpandLessOutlined onClick={()=>setShowAddNew(false)} style={{width:30, height:30}}/>
+                                :
+                                <AddBoxOutlined onClick={()=>setShowAddNew(true)} style={{width:30, height:30}}/>
+                        }
 
-                {/*<Field label={"ID"} setValue={setUserIdVal}/>*/}
+                    </div>
+                </div>
+                {showAddNew && <Field label={"Add new ID"} setValue={setUserIdVal}/>}
                 <Field label={"Team"} setValue={setTeam} />
                 <Field label={"Project"} setValue={setProject}/>
             </div>

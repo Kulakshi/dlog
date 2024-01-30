@@ -15,7 +15,7 @@ const Home = () => {
         </button>
         <button className='text-blue-50 bg-primary m-4 mt-0 h-full rounded-2xl text-lg font-normal'
             onClick={() => {
-            nav("/login")
+            nav("/consent")
         }}>
             I want to enter data
         </button>

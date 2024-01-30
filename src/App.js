@@ -11,6 +11,7 @@ import AllForms from "./pages/userflow/AllForms";
 import Home from "./pages/Home";
 import AdminLogin from "./pages/adminflow/AdminLogin";
 import FormDashboard from "./pages/adminflow/FormDashboard";
+import Consent from "./pages/Consent";
 
 function App() {
     return (
@@ -28,6 +29,7 @@ function App() {
                         <Route path="/admin/createfield" element={<CreateFiled/>}/>
                         {/*user flow*/}
                         <Route path="/login" element={<Login/>}/>
+                        <Route path="/consent" element={<Consent/>}/>
                         <Route path="/forms" element={<AllForms/>}/>
                         <Route path="/form" element={<Form/>}/>
                     </Routes>
