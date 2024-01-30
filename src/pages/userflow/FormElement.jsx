@@ -6,8 +6,8 @@ import {useUser} from "../../contexts/UserContext";
 import Counter from "../components/Counter";
 import DLogToggleButton from "../components/DLogToggleButton";
 
-const FormElement = ({formId, element, displayLabel}) => {
-    const {userId, isRecording} = useUser()
+const FormElement = ({formId, element, displayLabel, isRecording}) => {
+    const {userId} = useUser()
 
     const submitValue = ( val = null) => {
         if (isRecording){

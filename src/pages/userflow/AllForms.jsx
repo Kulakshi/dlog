@@ -30,6 +30,7 @@ const Forms = () => {
                     {forms?.map((form, i) => (
                         <ListItem key={form._id} onClick={() => nav("/form", {state: {form: form}})} label={form.name}/>
                     ))}
+                    <ListItem key={forms?.length + 1} onClick={() => nav("/feedback")} label={"Feedback"}/>
                 </ul>
                 {!isLoading && !forms && <div>No Forms available</div>}
                 {isLoading && !forms &&

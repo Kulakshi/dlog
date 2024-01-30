@@ -12,6 +12,7 @@ import Home from "./pages/Home";
 import AdminLogin from "./pages/adminflow/AdminLogin";
 import FormDashboard from "./pages/adminflow/FormDashboard";
 import Consent from "./pages/Consent";
+import Questionnaire from "./pages/Questionnaire";
 
 function App() {
     return (
@@ -32,6 +33,7 @@ function App() {
                         <Route path="/consent" element={<Consent/>}/>
                         <Route path="/forms" element={<AllForms/>}/>
                         <Route path="/form" element={<Form/>}/>
+                        <Route path="/feedback" element={<Questionnaire/>}/>
                     </Routes>
                 </BrowserRouter>
             </UserProvider>

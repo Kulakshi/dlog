@@ -65,7 +65,7 @@ const Form = () => {
                         :
                         {
                             ...item,
-                            layout: item.layout || {x: i, y: 0, w: 1, h: 2, static: !editModeOn}
+                            layout: {...item.layout}|| {x: i, y: 0, w: 1, h: 2, static: !editModeOn}
                         }
                 }) : null;
                 setItems(items)
@@ -160,18 +160,18 @@ const Form = () => {
                                 items && items.length > 0 && items.map((element, i) => {
                                     return <div key={element.element_id} className="bg-red-400 react-grid-item"
                                                 data-grid={{...element.layout, static: !editModeOn}}>
-                                        <FormElement formId={form._id} element={element} displayLabel={!form.hide_label}/>
+                                        <FormElement isRecording={isRecording} formId={form._id} element={element} displayLabel={!hideLable}/>
                                     </div>
                                 })
                             }
                         </ResponsiveGridLayout>
-                        {
-                            showTutorial && <FormTutorial onClose={()=>{setShowTutorial(false)}}/>
-                        }
+                        {/*{*/}
+                        {/*    showTutorial && <FormTutorial onClose={()=>{setShowTutorial(false)}}/>*/}
+                        {/*}*/}
                     </div>
-                    {
-                        !showTutorial && <Overlay isRecording={isRecording} setRecording={setRecording}/>
-                    }
+                    {/*{*/}
+                    {/*    !showTutorial && <Overlay isRecording={isRecording} setRecording={setRecording}/>*/}
+                    {/*}*/}
 
                 </>
                 :
