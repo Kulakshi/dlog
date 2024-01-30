@@ -6,6 +6,7 @@ export const UserProvider = ({children}) => {
     const [userId, setUserId] = useState(null);
     const [userRole, setUserRole] = useState(null);
     const [isRecording, setIsRecording] = useState(null);
+    const [showTutorial, setShowTutorial] = useState(true)
 
     useEffect(() => {
         // Try to retrieve the userId from localStorage
@@ -35,7 +36,7 @@ export const UserProvider = ({children}) => {
     };
 
     return (
-        <UserContext.Provider value={{userId, userRole, setUser, removeUser, isRecording, setIsRecording}}>
+        <UserContext.Provider value={{userId, userRole, setUser, removeUser, isRecording, setIsRecording, showTutorial, setShowTutorial}}>
             {children}
         </UserContext.Provider>
     );

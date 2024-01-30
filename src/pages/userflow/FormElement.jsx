@@ -17,7 +17,6 @@ const FormElement = ({formId, element, displayLabel}) => {
                     break
                 }
                 case "Counter": {
-                    console.log("counter", val)
                     addEntry(userId,formId, element.element_id, val)
                     break
                 }

@@ -10,16 +10,16 @@ const Scale = ({key, formId, element, setValue, displayLabel}) => {
             MuiSlider: {
                 styleOverrides: {
                     root: {
-                        color: '#145B63',
+                        color: 'black',
                     },
                     thumb: {
-                        backgroundColor: '#145B63',
+                        backgroundColor: 'black',
                     },
                     track: {
-                        backgroundColor: '#145B63',
+                        backgroundColor: 'black',
                     },
                     rail: {
-                        backgroundColor: '#145B63',
+                        backgroundColor: 'black',
                     },
                 },
             },

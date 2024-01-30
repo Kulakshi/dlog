@@ -14,11 +14,11 @@ const Header = ({title, backPath, backData, children}) => {
      }
 
     return (
-        <header className="bg-primary h-14 text-blue-50 p-3 w-full flex items-center text-xl justify-between overflow-visible">
+        <header className="bg-primary h-12 text-blue-50 p-1 px-3 w-full flex items-center text-lg justify-between overflow-visible">
             <div className="flex flex-row items-center gap-2" onClick={onOffDrawer}>
-                {userId && !drawerVisible && <Menu onClick={onOffDrawer}/>}
-                {userId && drawerVisible && <MenuOpen onClick={onOffDrawer}/>}
-                {backPath && <BackButton backPath={backPath} backData={backData}/>}
+                {userId && !drawerVisible && <Menu onClick={onOffDrawer} style={{width:25, height:25}}/>}
+                {userId && drawerVisible && <MenuOpen onClick={onOffDrawer}  style={{width:25, height:25}}/>}
+                {backPath && <BackButton backPath={backPath} backData={backData}  style={{width:25, height:25}}/>}
                 {title}
             </div>
             {children}
