@@ -48,6 +48,10 @@ const Form = () => {
     const [items, setItems] = useState(null)
     const [hideLable, setHideLabel] = useState(null)
 
+    useEffect(() => {
+        if (editModeOn) setRecording(false)
+    }, [editModeOn]);
+
     const loadForm = () => {
         userRole && location.state.form && getForm(userRole, userId, location.state.form._id)
             .then((res) => {
@@ -128,7 +132,7 @@ const Form = () => {
                                         <PauseCircleOutlined onClick={setRecording} className="animate-bounce"
                                                      style={{ animationDuration: '1s', animationIterationCount: 2 }}/>
                                         :
-                                        <PlayCircleOutlined onClick={setRecording}/>
+                                        <PlayCircleOutlined className="" onClick={setRecording}/>
                                     }
                                 </>
                             }
