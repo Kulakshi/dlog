@@ -165,13 +165,13 @@ const Form = () => {
                                 })
                             }
                         </ResponsiveGridLayout>
-                        {/*{*/}
-                        {/*    showTutorial && <FormTutorial onClose={()=>{setShowTutorial(false)}}/>*/}
-                        {/*}*/}
+                        {
+                            showTutorial && <FormTutorial onClose={()=>{setShowTutorial(false)}}/>
+                        }
                     </div>
-                    {/*{*/}
-                    {/*    !showTutorial && <Overlay isRecording={isRecording} setRecording={setRecording}/>*/}
-                    {/*}*/}
+                    {
+                        !showTutorial && <Overlay isRecording={isRecording} setRecording={setRecording}/>
+                    }
 
                 </>
                 :
