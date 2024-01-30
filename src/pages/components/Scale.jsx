@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import InfoButton from "./InfoButton";
 import {Slider, Box, Typography, ThemeProvider, createTheme} from '@mui/material';
 
-const Scale = ({key, formId, element, setValue, displayLabel}) => {
+const Scale = ({key, formId, element, setValue, displayLabel, isRecording}) => {
     const [sliderValue, setSliderValue] = useState();
 
     const theme = createTheme({
@@ -43,7 +43,7 @@ const Scale = ({key, formId, element, setValue, displayLabel}) => {
 
     return (
 
-        <div className="border border-amber-950 rounded h-full flex-grow items-start flex flex-col p-2 bg-neutralVariant" key={key}>
+        <div className={`border border-amber-950 rounded h-full flex-grow items-start flex flex-col p-2 ${isRecording? "bg-neutralVariant" : "bg-gray-300"}`} key={key}>
             <div className="flex flex-row justify-between w-full">
                 {displayLabel && element.label}
                 {!displayLabel && <InfoButton formId={formId} element={element} />}

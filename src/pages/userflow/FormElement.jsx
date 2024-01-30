@@ -31,16 +31,16 @@ const FormElement = ({formId, element, displayLabel, isRecording}) => {
     }
     switch (element.element_type){
         case "TimeStamp":
-            return <TimeStampButton key={element.element_id} formId={formId} element={element}
+            return <TimeStampButton key={element.element_id} formId={formId} element={element} isRecording={isRecording}
                                     onClick={()=>submitValue()} displayLabel={displayLabel}/>
         case "Counter":
-            return <Counter key={element.element_id} formId={formId} element={element}
+            return <Counter key={element.element_id} formId={formId} element={element} isRecording={isRecording}
                                     setValue={(val)=>submitValue(val)} displayLabel={displayLabel}/>
         case "Slider":
-            return <Scale key={element.element_id} formId={formId} element={element}
+            return <Scale key={element.element_id} formId={formId} element={element} isRecording={isRecording}
                           setValue={(val)=>submitValue(val)} displayLabel={displayLabel}/>
         case "Toggle":
-            return <DLogToggleButton key={element.element_id} formId={formId} element={element}
+            return <DLogToggleButton key={element.element_id} formId={formId} element={element} isRecording={isRecording}
                                     onClick={()=>submitValue()} displayLabel={displayLabel}/>
         default: <></>
     }

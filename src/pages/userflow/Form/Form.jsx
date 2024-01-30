@@ -154,7 +154,7 @@ const Form = () => {
                     </Header>
                     <div className='flex flex-1 justify-around overflow-auto'>
                         <ResponsiveGridLayout
-                            className="layout flex-1 bg-yellow-600x justify-center"
+                            className="layout flex-1 justify-center"
                             // layouts={layout}
                             onLayoutChange={onLayoutChange}
                             breakpoints={{lg: window.screen.height}}
