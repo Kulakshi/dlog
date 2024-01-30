@@ -7,7 +7,7 @@ const Field = ({label, placeholder, setValue}) => {
             <input
                 type="text"
                 className=" w-5/6 mt-1 p-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300 h-12"
-                placeholder={placeholder ? placeholder : "Type here..."}
+                placeholder={placeholder ? placeholder : label}
                 onChange={(e) => setValue(e.target.value)}
             />
         </div>
