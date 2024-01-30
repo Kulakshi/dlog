@@ -49,7 +49,7 @@ const Form = () => {
     const [hideLable, setHideLabel] = useState(null)
 
     const loadForm = () => {
-        userRole && getForm(userRole, userId, location.state.form._id)
+        userRole && location.state.form && getForm(userRole, userId, location.state.form._id)
             .then((res) => {
                 const form = res?.response.form
                 setForm(form)
@@ -60,12 +60,12 @@ const Form = () => {
                     return item.element_type !== "Slider" ?
                         {
                             ...item,
-                            layout: item.layout || {x: i, y: 0, w: 1, h: 2, static: !editModeOn}
+                            layout: (item.layout && item.layout.x )? item.layout : {x: i, y: 0, w: 1, h: 2, static: !editModeOn}
                         }
                         :
                         {
                             ...item,
-                            layout: {...item.layout}|| {x: i, y: 0, w: 1, h: 2, static: !editModeOn}
+                            layout: (item.layout && item.layout.x ) ? item.layout : {x: i, y: 0, w: 1, h: 2, static: !editModeOn}
                         }
                 }) : null;
                 setItems(items)

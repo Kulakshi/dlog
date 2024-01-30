@@ -10,7 +10,7 @@ const Drawer = () => {
 
     return (
         <div className="absolute top-12 left-0 h-full w-52 bg-primary z-40 text-left text-sm p-4">
-            {userRole === "ADMIN" && <p className="font-bold text-neutralVariant py-5" onClick={()=>{
+            {userRole === "ADMIN" && <p className="font-bold text-white py-5" onClick={()=>{
                 removeUser()
                 nav('/login')
             }}> Login as User </p>}
